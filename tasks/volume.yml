@@ -10,7 +10,7 @@
   when: host_preparation_apt_cacher_ng is defined
 
 - name: Install Python 2
-  raw: "python --version || apt-get update && apt-get install -y python"
+  raw: "python --version || apt update && apt install -y python"
   become: true
   delegate_to: "{{ os_volumes_loop.name }}"
 
