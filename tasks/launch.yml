@@ -31,6 +31,10 @@
     volume_size: "{{ os_instance.volume_size }}"
     boot_from_volume: true
     volumes: "{{ os_volumes_list }}"
+    meta:
+      hostname: "{{ os_instance_name }}"
+      group: "{{ service_name }}"
+
   register: openstack_instance
 
 - name: Add new instance to host group
