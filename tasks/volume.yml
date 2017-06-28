@@ -9,6 +9,13 @@
   delegate_to: "{{ os_volumes_loop.name }}"
   when: host_preparation_apt_cacher_ng is defined
 
+- name: Configure APT compression-types
+  raw: "echo 'Acquire::CompressionTypes::Order:: \"{{ host_preparation_apt_compression_types }}\";' >
+      /etc/apt/apt.conf.d/12compression-types"
+  become: true
+  delegate_to: "{{ os_volumes_loop.name }}"
+  when: host_preparation_apt_compression_types is defined
+
 - name: Install Python 2
   raw: "python --version || apt update && apt install -y python"
   become: true
