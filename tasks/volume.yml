@@ -19,7 +19,6 @@
 - name: Change deb source to archive.ubuntu.com
   become: true
   raw: "sed -i s#http://.*.archive.ubuntu.com#http://archive.ubuntu.com#g /etc/apt/sources.list"
-  become: true
   delegate_to: "{{ os_volumes_loop.name }}"
 
 - name: Install Python 2
